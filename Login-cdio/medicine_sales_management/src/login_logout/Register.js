@@ -28,11 +28,14 @@ const Register = () => {
     const passwordRegex = /^[a-zA-Z0-9]{8,}$/;
     // Use a regular expression to enforce password strength rules
     const isStrong = passwordRegex.test(password);
-    !isStrong &&
+    if (!isStrong) {
       notify(
         "Mật khẩu ít nhất 6 ký tự và báo gồm chữ in hoa, chữ thường, và số!",
         "error"
       );
+      return false;
+    }
+
     if (oldPass !== newPass) {
       notify("Mật khẩu không trùng khớp, vui lòng nhập lại!", "error");
       return false;
