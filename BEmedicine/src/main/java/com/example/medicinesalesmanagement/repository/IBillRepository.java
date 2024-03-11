@@ -16,7 +16,7 @@ public interface IBillRepository extends JpaRepository<Bill,Integer> {
             "on b.id_member = m.id_member " +
             "join medicine c " +
             "on b.id_medicine = c.id_medicine " +
-            "where e.name like :name_employee and m.name like :name_member and c.name like :name_medicine " +
+            "where e.name like :name_employee and m.name like :name_member and c.name_medicine like :name_medicine " +
             "order by b.id_bill",nativeQuery = true)
     List<Bill> findBillByEmployeeAndMemberAndMedicineContaining(@Param("name_employee")String searchNameEmployee,
                                                                 @Param("name_member")String searchNameMember,
